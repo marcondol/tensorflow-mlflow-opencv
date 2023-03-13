@@ -12,7 +12,6 @@ WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app
-
 # Set the entrypoint to run mlflow server
 EXPOSE 5000
 ENTRYPOINT ["mlflow", "server", "--host", "0.0.0.0"]

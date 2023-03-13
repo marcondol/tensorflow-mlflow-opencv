@@ -24,14 +24,14 @@ for file in os.listdir(path):
     class_img = file[:3]
     if ext.lower() not in valid_images:
         continue
-    
-    
-    
-    imagePath = path + '\\' + file
+
+
+
+    imagePath = path + '/' + file
     image = cv2.imread(imagePath)
     image = cv2.resize(image, (32, 32)).flatten()
     train_imgs.append(image)
-    
+
     label = 0 if class_img == 'dog' else 1
     train_labels.append(label)
 
@@ -45,17 +45,17 @@ for file in os.listdir(path_test):
     class_img = file[:3]
     if ext.lower() not in valid_images:
         continue
-    
-    
-    
-    imagePath = path + '\\' + file
+
+
+
+    imagePath = path + '/' + file
     image = cv2.imread(imagePath)
     image = cv2.resize(image, (32, 32)).flatten()
     test_imgs.append(image)
-    
+
     label = 0 if class_img == 'dog' else 1
     test_labels.append(label)
-#%%    
+#%%
 train_imgs = np.array(train_imgs, dtype="float") / 255.0
 train_labels = np.array(train_labels)
 train_labels = to_categorical(train_labels)
@@ -88,28 +88,3 @@ model.compile(loss="categorical_crossentropy", optimizer=opt,
 # train the neural network
 H = model.fit(x=train_imgs, y=train_labels, validation_data=(test_imgs, test_labels),
 	epochs=EPOCHS, batch_size=2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
